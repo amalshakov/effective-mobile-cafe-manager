@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ form.instance.id|default:"Добавление нового заказа" }}{% endblock %}
+
+{% block content %}
+<h1>
+    {% if form.instance.id %}
+        Редактирование заказа #{{ form.instance.id }}
+    {% else %}
+        Добавление нового заказа
+    {% endif %}
+</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">
+        {% if form.instance.id %}Обновить{% else %}Создать{% endif %}
+    </button>
+    <a href="{% url 'order_list' %}">Отмена</a>
+</form>
+{% endblock %}
