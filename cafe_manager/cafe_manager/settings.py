@@ -2,7 +2,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-qnyra(aphm9lf*06nke+t@)vslrb#1qw_*31wf4a_=ckqoptn1"
+SECRET_KEY = (
+    "django-insecure-qnyra(aphm9lf*06nke+t@)vslrb#1qw_*31wf4a_=ckqoptn1"
+)
 
 DEBUG = True
 
@@ -15,6 +17,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "orders",
 ]
 
 MIDDLEWARE = [
@@ -48,13 +51,13 @@ TEMPLATES = [
 WSGI_APPLICATION = "cafe_manager.wsgi.application"
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cafe_manager_db',
-        'USER': 'postgres_user',
-        'PASSWORD': 'postgres_password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "cafe_manager_db",
+        "USER": "postgres_user",
+        "PASSWORD": "postgres_password",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
