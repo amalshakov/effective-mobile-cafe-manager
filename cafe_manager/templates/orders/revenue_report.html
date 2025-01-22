@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Отчет о выручке{% endblock %}
+
+{% block content %}
+<h1>Отчет о выручке</h1>
+
+<p>Общая выручка за оплаченные заказы: <strong>{{ total_revenue|floatformat:2 }} ₽</strong></p>
+
+<a href="{% url 'order_list' %}">Вернуться к списку заказов</a>
+{% endblock %}
