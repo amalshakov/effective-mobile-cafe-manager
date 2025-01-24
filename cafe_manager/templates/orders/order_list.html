@@ -6,8 +6,8 @@
 <h1>Список заказов</h1>
 
 <form method="get" action="{% url 'order_list' %}">
-    <label for="q">Поиск по номеру стола или статусу:</label>
-    <input type="text" id="q" name="q" placeholder="Например: 1 или paid">
+    <label for="q">Поиск по номеру стола или статусу (pending, ready, paid):</label>
+    <input type="text" id="q" name="q" placeholder="1 или paid">
     <button type="submit">Найти</button>
 </form>
 
@@ -16,8 +16,8 @@
         <tr>
             <th>ID</th>
             <th>Номер стола</th>
-            <th>Блюда</th>
-            <th>Стоимость</th>
+            <th>Список блюд</th>
+            <th>Общая стоимость</th>
             <th>Статус</th>
             <th>Создан</th>
             <th>Действия</th>
@@ -39,9 +39,8 @@
             <td>{{ order.get_status_display }}</td>
             <td>{{ order.created_at|date:"d.m.Y H:i" }}</td>
             <td>
-                <a href="{% url 'order_edit' order.id %}">Изменить</a> |
+                <a href="{% url 'order_update' order.id %}">Изменить</a> |
                 <a href="{% url 'order_delete' order.id %}">Удалить</a>
-                <a href="{% url 'revenue_report' %}" class="button">Посмотреть отчет о выручке</a>
             </td>
         </tr>
         {% empty %}
