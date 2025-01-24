@@ -1,22 +1,54 @@
 {% extends "base.html" %}
 
-{% block title %}{{ form.instance.id|default:"Добавление нового заказа" }}{% endblock %}
+{% block title %}Создание/Редактирование заказа{% endblock %}
 
 {% block content %}
 <h1>
     {% if form.instance.id %}
         Редактирование заказа #{{ form.instance.id }}
     {% else %}
-        Добавление нового заказа
+        Создание нового заказа
     {% endif %}
 </h1>
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <div>
+        {{ form.table_number.label_tag }}
+        {{ form.table_number }}
+        {% if form.table_number.errors %}
+            <ul class="errorlist">
+                {% for error in form.table_number.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.status.label_tag }}
+        {{ form.status }}
+        {% if form.status.errors %}
+            <ul class="errorlist">
+                {% for error in form.status.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div>
+        {{ form.items_text.label_tag }}
+        {{ form.items_text }}
+        {% if form.items_text.errors %}
+            <ul class="errorlist">
+                {% for error in form.items_text.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <small>{{ form.items_text.help_text }}</small>
+    </div>
     <button type="submit">
         {% if form.instance.id %}Обновить{% else %}Создать{% endif %}
     </button>
-    <a href="{% url 'order_list' %}">Отмена</a>
 </form>
 {% endblock %}
