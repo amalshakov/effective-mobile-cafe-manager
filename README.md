@@ -92,7 +92,7 @@ python manage.py createsuperuser
                     "id": 2,
                     "items": [
                         {
-                            "name": "лак",
+                            "name": "авокадо",
                             "price": 70.0
                         },
                         {
