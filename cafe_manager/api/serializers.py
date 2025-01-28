@@ -4,13 +4,17 @@ from orders.models import Order
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    items = serializers.JSONField()
+    """Сериализатор для модели Order."""
+
+    items = serializers.JSONField(help_text="Список блюд.")
 
     class Meta:
         model = Order
         fields = "__all__"
 
-    def validate_items(self, value):
+    def validate_items(
+        self, value: list[dict[str, float]]
+    ) -> list[dict[str, float]]:
         """Проверяем, что список блюд корректный."""
         if not isinstance(value, list) or not value:
             raise serializers.ValidationError(
