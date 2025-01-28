@@ -1,2 +1,6 @@
 [tool.black]
 line-length = 79
+
+[tool.pytest.ini_options]
+pythonpath = [".", "cafe_manager"]
+DJANGO_SETTINGS_MODULE = "tests.settings"
