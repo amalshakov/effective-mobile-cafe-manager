@@ -26,19 +26,27 @@ git clone git@github.com:amalshakov/effective-mobile-cafe-manager.git
 python -m venv venv
 source venv/Scripts/activate
 ```
-3. **Запустите docker-compose (postgres db)**:
+3. **Установите зависимости**:
+```
+pip install -r .\requirements.txt
+```
+4. **Запустите docker-compose (postgres db)**:
 ```
 docker-compose up
 ```
-4. **Перейдите в папку проекта, создайте и примените миграции**:
+5. **Перейдите в папку проекта, создайте и примените миграции**:
 ```
 cd cafe_manager
 python manage.py makemigrations
 python manage.py migrate
 ```
-5. **Если планируете работать через админку, создайте суперпользователя**:
+6. **Если планируете работать через админку, создайте суперпользователя**:
 ```
 python manage.py createsuperuser
+```
+7. **Запустите сервер локально**:
+```
+python manage.py runserver
 ```
 
 ## Веб-интерфейс
